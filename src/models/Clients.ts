@@ -1,6 +1,6 @@
 import { uuid } from 'uuidv4';
 
-export default class Product {
+export default class Clients {
   id: string;
 
   code: number;
@@ -22,7 +22,7 @@ export default class Product {
     phone,
     cpf,
     email,
-  }: Omit<Product, 'id'>) {
+  }: Omit<Clients, 'id'>) {
     this.id = uuid();
     this.budget = budget;
     this.code = code;
