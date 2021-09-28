@@ -34,4 +34,15 @@ export default class ClientsRepository {
     this.client.push(clients);
     return clients;
   }
+
+  public deleteByCode(code: number) {
+    const index = this.client.findIndex(index => index.code === code);
+
+    if (index === -1) {
+      throw Error('Erro!');
+    }
+
+    this.client.splice(index, 1);
+    return this.client;
+  }
 }

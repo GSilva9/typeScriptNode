@@ -36,4 +36,13 @@ clientsRouter.post('/', (request, response) => {
     }
 });
 
+clientsRouter.delete('/delete/:code', (request, response) => {
+    try {
+      const code = parseInt(request.params.code, 10);
+      return response.json(clientsRepository.deleteByCode(code));
+    } catch (err) {
+      return response.status(400).json({ Erro: err.message });
+    }
+  });
+
 export default clientsRouter;
