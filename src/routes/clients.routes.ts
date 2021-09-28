@@ -43,6 +43,21 @@ clientsRouter.delete('/delete/:code', (request, response) => {
     } catch (err) {
       return response.status(400).json({ Erro: err.message });
     }
-  });
+});
 
+clientsRouter.put('/att/:code', (request, response) => {
+    try{
+      const code = parseInt(request.params.code, 10);
+      const name = request.body.name;
+      const cpf = request.body.cpf;
+      const email = request.body.email;
+      const budget = request.body.budget;
+      const phone = request.body.phone;
+  
+      return response.json(clientsRepository.att(name, cpf, email, budget, code, phone))
+  
+    } catch (err) {
+      return response.status(400).json({ Erro: err.message });
+    }
+  });
 export default clientsRouter;

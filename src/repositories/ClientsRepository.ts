@@ -24,12 +24,12 @@ export default class ClientsRepository {
     email,
   }: Clients): Clients {
     const clients = new Clients({
-        budget,
-        code,
-        name,
-        phone,
-        cpf,
-        email,
+      budget,
+      code,
+      name,
+      phone,
+      cpf,
+      email,
     });
     this.client.push(clients);
     return clients;
@@ -44,5 +44,30 @@ export default class ClientsRepository {
 
     this.client.splice(index, 1);
     return this.client;
+  }
+
+  public att(
+    name: string,
+    cpf: number,
+    phone: number,
+    email: string,
+    budget: number,
+    code: number,
+
+  ): Clients | undefined {
+    const index = this.client.find(p => p.code === code);
+
+    if (index == undefined) {
+      throw Error('Erro!');
+    } else {
+      
+      index.name = name;
+      index.budget = budget;
+      index.cpf = cpf;
+      index.email = email;
+      index.phone = phone;
+      index.code = code;
+    }
+    return index;
   }
 }
